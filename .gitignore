@@ -1,0 +1,46 @@
+# CodeIgniter 3 directories
+application/cache/*
+application/logs/*
+!application/logs/index.html
+!application/cache/index.html
+
+# Ignore .env file if using for environment variables
+.env
+
+# Ignore user uploads
+uploads/*
+!uploads/index.html
+
+# Ignore Composer dependencies
+/vendor/*
+!vendor/autoload.php
+!vendor/composer/*
+!vendor/index.html
+
+# Ignore XAMPP and MAMP server files
+xamppfiles/
+*.exe
+*.dll
+*.so
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor config files
+.idea/
+*.sublime-workspace
+*.sublime-project
+.vscode/
+
+# Ignore PHPStorm project files
+/.phpstorm.meta.php
+
+# Ignore Composer lock file (optional, depends on your project)
+composer.lock
+
+# Ignore node_modules if you are using npm/yarn for frontend
+node_modules/
+
+# Ignore MacOS system files
+*.DS_Store
