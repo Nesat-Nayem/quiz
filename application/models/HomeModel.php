@@ -51,35 +51,64 @@ class HomeModel extends CI_Model {
         ->result(); 
     }
 
+    // function get_upcoming_quiz()
+    // {
+    //     $user_id = isset($this->user['id']) ? $this->user['id'] : 0;
+    //     $current_date_time = date('Y-m-d h:i:s a');
+    //     $current_date_time = strtotime($current_date_time);
+    //     $new_current_time = $current_date_time + ($this->settings->display_countdown_before_starting_quiz * 60 * 60);
+    //     //p(date('Y-m-d h:i:s a',$new_current_time));
+
+    //     return $this->db->select("quizes.*,
+    //         (select count(id) from questions where questions.quiz_id = quizes.id) as total_question, 
+    //         (select first_name from users where users.id = quizes.user_id) as first_name , 
+    //         (select last_name from users where users.id = quizes.user_id) as last_name, 
+    //         (SELECT count(id) FROM quiz_count where quiz_id = quizes.id) as total_view,
+    //         (SELECT id FROM quiz_like where quiz_id = quizes.id AND user_id = '".$user_id."') as like_id,
+    //         (SELECT count(id) FROM quiz_like where quiz_id = quizes.id) as total_like,
+    //         (select count(id) from quiz_reviews where quiz_reviews.rel_id = quizes.id AND quiz_reviews.status =1 AND quiz_reviews.rel_type = '".'quiz'."') as rating,
+    //         (select SUM(rating) from quiz_reviews where quiz_reviews.rel_id = quizes.id AND quiz_reviews.status =1 AND quiz_reviews.rel_type = '".'quiz'."') as total_rating")
+    //     //->where('quizes.number_questions <= (select count(id) from questions where questions.quiz_id = quizes.id)')
+    //     ->where('quizes.start_date_time !=',0)
+    //     ->where('quizes.end_date_time !=',33168837600)
+    //     ->where('quizes.start_date_time <=',$new_current_time)
+    //     ->where('quizes.start_date_time >=',$current_date_time)
+    //     ->where('is_quiz_active',1)
+    //     //->order_by($order,$order_type)
+    //     ->limit(4)
+    //     ->get('quizes')
+    //     ->result(); 
+    // }
+
+   
     function get_upcoming_quiz()
     {
         $user_id = isset($this->user['id']) ? $this->user['id'] : 0;
-        $current_date_time = date('Y-m-d h:i:s a');
-        $current_date_time = strtotime($current_date_time);
-        $new_current_time = $current_date_time + ($this->settings->display_countdown_before_starting_quiz * 60 * 60);
-        //p(date('Y-m-d h:i:s a',$new_current_time));
-
+        $current_date_time = strtotime(date('Y-m-d H:i:s'));
+    
+        // Calculate the timestamp for one month later
+        $one_month_later_time = strtotime('+1 month', $current_date_time);
+    
         return $this->db->select("quizes.*,
-            (select count(id) from questions where questions.quiz_id = quizes.id) as total_question, 
-            (select first_name from users where users.id = quizes.user_id) as first_name , 
-            (select last_name from users where users.id = quizes.user_id) as last_name, 
+            (select count(id) from questions where questions.quiz_id = quizes.id) as total_question,
+            (select first_name from users where users.id = quizes.user_id) as first_name,
+            (select last_name from users where users.id = quizes.user_id) as last_name,
             (SELECT count(id) FROM quiz_count where quiz_id = quizes.id) as total_view,
             (SELECT id FROM quiz_like where quiz_id = quizes.id AND user_id = '".$user_id."') as like_id,
             (SELECT count(id) FROM quiz_like where quiz_id = quizes.id) as total_like,
             (select count(id) from quiz_reviews where quiz_reviews.rel_id = quizes.id AND quiz_reviews.status =1 AND quiz_reviews.rel_type = '".'quiz'."') as rating,
             (select SUM(rating) from quiz_reviews where quiz_reviews.rel_id = quizes.id AND quiz_reviews.status =1 AND quiz_reviews.rel_type = '".'quiz'."') as total_rating")
-        //->where('quizes.number_questions <= (select count(id) from questions where questions.quiz_id = quizes.id)')
-        ->where('quizes.start_date_time !=',0)
-        ->where('quizes.end_date_time !=',33168837600)
-        ->where('quizes.start_date_time <=',$new_current_time)
-        ->where('quizes.start_date_time >=',$current_date_time)
-        ->where('is_quiz_active',1)
-        //->order_by($order,$order_type)
+        ->where('quizes.start_date_time !=', 0)
+        ->where('quizes.end_date_time !=', 33168837600)
+        ->where('quizes.start_date_time <=', $one_month_later_time)
+        ->where('quizes.start_date_time >=', $current_date_time)
+        ->where('is_quiz_active', 1)
         ->limit(4)
         ->get('quizes')
-        ->result(); 
+        ->result();
     }
-
+    
+   
     function get_quiz_by_category($category_id,$sub_category,$rating,$price)
     {
         $this->db->select("quizes.id, quizes.number_questions, (SELECT COUNT(id) FROM questions WHERE questions.quiz_id = quizes.id) questions");
