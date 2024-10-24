@@ -14,6 +14,7 @@
                      <span class="small form-error"> <?php echo strip_tags(form_error('title')); ?> </span>  
                   </div>
                </div>
+               
                <div class="col-6">
                   <div class="form-group">
                      <?php echo form_label(lang('admin_parent_category'), 'parentcategory'); ?>

@@ -187,6 +187,8 @@
                </ul>
             </nav>
             <?php // Fixed navbar ?>
+
+
             <div class="main-sidebar sidebar-style-2" tabindex="1" >
                <aside id="sidebar-wrapper">
                   <div class="sidebar-brand">
@@ -239,6 +241,22 @@
                         </li>
                         <?php 
                      } ?>
+
+<li class="dropdown<?php echo (strstr(uri_string(), 'admin/medium')) ? ' active' : ''; ?>">
+    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+        <i class="fas fa-language"></i>
+        <span>Medium</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="<?php echo (uri_string() == 'admin/medium') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/medium'); ?>" class="nav-link">Medium List</a>
+        </li>
+        <li class="<?php echo (uri_string() == 'admin/medium/form') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/medium/form'); ?>" class="nav-link">Add Medium</a>
+        </li>
+    </ul>
+</li>
+
 
                      <li class="dropdown<?php echo ((strstr(uri_string(), 'admin/quiz')) OR(strstr(uri_string(), 'admin/paragraph')) OR (strstr(uri_string(), 'admin/section')) ) ? ' active' : ''; ?>">
                         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">

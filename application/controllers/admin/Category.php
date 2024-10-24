@@ -101,11 +101,14 @@ class Category extends Admin_Controller {
         $this->load->view($this->template, $data);
     }
 
+
+
     function category_list() 
     {
         $list = $this->CategoryModel->get_category();
         $list = json_decode(json_encode($list), true);
 
+         
         // $newarray = $this->CategoryModel->allcategory();
         $newarray = $list;
         // $tree = $this->buildTree($newarray);        
