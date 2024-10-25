@@ -249,13 +249,24 @@
     </a>
     <ul class="dropdown-menu">
         <li class="<?php echo (uri_string() == 'admin/medium') ? 'active' : ''; ?>">
-            <a href="<?php echo base_url('admin/medium'); ?>" class="nav-link">Medium List</a>
+            <a href="<?php echo base_url('admin/medium'); ?>" class="nav-link">Medium</a>
         </li>
-        <li class="<?php echo (uri_string() == 'admin/medium/form') ? 'active' : ''; ?>">
-            <a href="<?php echo base_url('admin/medium/form'); ?>" class="nav-link">Add Medium</a>
+
+        <li class="<?php echo (uri_string() == 'admin/standard') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/standard'); ?>" class="nav-link">Standard</a>
+        </li>
+        <li class="<?php echo (uri_string() == 'admin/class') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/class'); ?>" class="nav-link">Class</a>
+        </li>
+        <li class="<?php echo (uri_string() == 'admin/subject') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/subject'); ?>" class="nav-link">Subject</a>
+        </li>
+        <li class="<?php echo (uri_string() == 'admin/paper') ? 'active' : ''; ?>">
+            <a href="<?php echo base_url('admin/paper'); ?>" class="nav-link">Paper</a>
         </li>
     </ul>
 </li>
+
 
 
                      <li class="dropdown<?php echo ((strstr(uri_string(), 'admin/quiz')) OR(strstr(uri_string(), 'admin/paragraph')) OR (strstr(uri_string(), 'admin/section')) ) ? ' active' : ''; ?>">

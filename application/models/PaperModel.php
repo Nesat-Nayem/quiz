@@ -1,33 +1,33 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MediumModel extends CI_Model 
+class PaperModel extends CI_Model 
 {
-    private $table = 'mediums';
+    private $table = 'papers';
 
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
 
-    public function insert_medium($data) {
+    public function insert_paper($data) {
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
 
-    public function get_medium_by_id($id) {
+    public function get_paper_by_id($id) {
         return $this->db->where('id', $id)->get($this->table)->row();
     }
 
-    public function get_all_mediums() {
+    public function get_all_papers() {
         return $this->db->get($this->table)->result();
     }
 
-    public function update_medium($id, $data) {
+    public function update_paper($id, $data) {
         $this->db->set($data)->where('id', $id)->update($this->table);
         return $this->db->affected_rows();
     }
 
-    public function delete_medium($id) {
+    public function delete_paper($id) {
         $this->db->where('id', $id)->delete($this->table);
         return $this->db->affected_rows();
     }

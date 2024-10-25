@@ -10,6 +10,7 @@
    <a href="<?php echo base_url("admin/institution/add");?>" class="btn btn-primary cat float-right" ><?php echo lang('add institution'); ?></a>
    <div class="clearfix"></div>
    <hr>
+   
    <table id="table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
          <tr>

@@ -5,6 +5,7 @@
   var csrfName = $("#csrf_hash").val();
   var csrf_token = $("#csrf_token").val();
 
+  
   //datatables
   table = $("#table").DataTable({
     language: {

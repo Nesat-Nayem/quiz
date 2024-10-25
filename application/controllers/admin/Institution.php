@@ -28,6 +28,7 @@ class Institution extends Admin_Controller {
         define('DEFAULT_DIR', "asc");
 
 
+
         if(is_loged_in_user_is_subadmin() == TRUE)
         {
             $this->session->set_flashdata('error', lang('you_dont_have_permission_to_access_this_url'));
@@ -131,6 +132,7 @@ class Institution extends Admin_Controller {
         $all_courses = $this->InstitutionModal->get_all_courses();
         $institution_course_array = array(); 
 
+        
         $this->set_title(lang('add_institution'));
         $data = $this->includes;
 

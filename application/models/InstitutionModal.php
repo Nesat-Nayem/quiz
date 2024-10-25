@@ -9,6 +9,7 @@ class InstitutionModal extends CI_Model
     public function __construct() {
         parent::__construct();
         $this->load->database();
+        
     }
 
     private function _get_datatables_query() {

@@ -11,6 +11,7 @@ class CourseModel extends CI_Model
         $this->load->database();
     }
 
+    
     private function _get_datatables_query() {
         $this->db->from($this->table);
         $i = 0;

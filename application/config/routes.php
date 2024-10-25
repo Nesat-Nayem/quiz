@@ -183,6 +183,19 @@ $route['admin/payment/invoice/(:any)']   		= 'admin/Payment_Controller/invoice/$
 
 //================================= Company Routes ========================================
 
+$route['admin/class'] = 'admin/ClassController';
+$route['admin/class/add'] = 'admin/ClassController/add';
+$route['admin/class/update/(:num)'] = 'admin/ClassController/update/$1';
+$route['admin/class/delete/(:num)'] = 'admin/ClassController/delete/$1';
+
+
+$route['admin/student-class'] = 'admin/StudentClassController';
+$route['admin/student-class/add'] = 'admin/StudentClassController/add';
+$route['admin/student-class/update/(:num)'] = 'admin/StudentClassController/update/$1';
+$route['admin/student-class/delete/(:num)'] = 'admin/StudentClassController/delete/$1';
+
+
+
 $route['admin/questions']                				= 'admin/QuestionController/index';
 $route['admin/questions/add/(:any)']                	= 'admin/QuestionController/add/$1';
 $route['admin/questions/update/(:any)/(:any)']          = 'admin/QuestionController/update/$1/$2';
